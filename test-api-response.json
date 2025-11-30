@@ -1,0 +1,148 @@
+{
+  "kind": "customsearch#search",
+  "url": {
+    "type": "application/json",
+    "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+  },
+  "queries": {
+    "request": [
+      {
+        "title": "Google Custom Search - 진청바지 옷 의류 패션",
+        "totalResults": "5780000",
+        "searchTerms": "진청바지 옷 의류 패션",
+        "count": 5,
+        "startIndex": 1,
+        "inputEncoding": "utf8",
+        "outputEncoding": "utf8",
+        "safe": "off",
+        "cx": "f3a10922865bf445b",
+        "searchType": "image"
+      }
+    ],
+    "nextPage": [
+      {
+        "title": "Google Custom Search - 진청바지 옷 의류 패션",
+        "totalResults": "5780000",
+        "searchTerms": "진청바지 옷 의류 패션",
+        "count": 5,
+        "startIndex": 6,
+        "inputEncoding": "utf8",
+        "outputEncoding": "utf8",
+        "safe": "off",
+        "cx": "f3a10922865bf445b",
+        "searchType": "image"
+      }
+    ]
+  },
+  "context": {
+    "title": "옷검색"
+  },
+  "searchInformation": {
+    "searchTime": 0.126243,
+    "formattedSearchTime": "0.13",
+    "totalResults": "5780000",
+    "formattedTotalResults": "5,780,000"
+  },
+  "items": [
+    {
+      "kind": "customsearch#result",
+      "title": "진청바지 코디 겨울 | TikTok",
+      "htmlTitle": "\u003cb\u003e진청바지\u003c/b\u003e 코디 겨울 | TikTok",
+      "link": "https://www.tiktok.com/api/img/?itemId=7572795552597839111&location=0&aid=1988",
+      "displayLink": "www.tiktok.com",
+      "snippet": "진청바지 코디 겨울 | TikTok",
+      "htmlSnippet": "\u003cb\u003e진청바지\u003c/b\u003e 코디 겨울 | TikTok",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://www.tiktok.com/discover/%EC%A7%84%EC%B2%AD%EB%B0%94%EC%A7%80-%EC%BD%94%EB%94%94-%EA%B2%A8%EC%9A%B8",
+        "height": 1920,
+        "width": 1080,
+        "byteSize": 98050,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThs1-ys-s0e0cL29zpa__VeHWYZ4KuFf9jGy2zUfX55S7wUmh2biqWCw&s",
+        "thumbnailHeight": 150,
+        "thumbnailWidth": 84
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "🍒🍒🍒 니트가디건 이뻐~~🥰🥰🥰 #오늘의신상 #더로렌#쇼핑몰#명품 ...",
+      "htmlTitle": "🍒🍒🍒 니트가디건 이뻐~~🥰🥰🥰 #오늘의신상 #더로렌#쇼핑몰#명품 ...",
+      "link": "https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3772783362571211872",
+      "displayLink": "www.instagram.com",
+      "snippet": "🍒🍒🍒 니트가디건 이뻐~~🥰🥰🥰 #오늘의신상 #더로렌#쇼핑몰#명품 ...",
+      "htmlSnippet": "🍒🍒🍒 니트가디건 이뻐~~🥰🥰🥰 #오늘의신상 #더로렌#쇼핑몰#명품 ...",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://www.instagram.com/p/DRbnny0D1pX/",
+        "height": 1414,
+        "width": 1440,
+        "byteSize": 347539,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr5nxhHF_KfWtBj8MjjLKP40j0OR6l9eA9EclwbeBHMIA9w40ocxfMXqU&s",
+        "thumbnailHeight": 147,
+        "thumbnailWidth": 150
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "4050 여성 주목! 10살은 어려보이는 가을 패션 코디법 #미샵 #여성의류 ...",
+      "htmlTitle": "4050 여성 주목! 10살은 어려보이는 가을 \u003cb\u003e패션\u003c/b\u003e 코디법 #미샵 #여성\u003cb\u003e의류\u003c/b\u003e ...",
+      "link": "https://www.tiktok.com/api/img/?itemId=7413270716042300680&location=0&aid=1988",
+      "displayLink": "www.tiktok.com",
+      "snippet": "4050 여성 주목! 10살은 어려보이는 가을 패션 코디법 #미샵 #여성의류 ...",
+      "htmlSnippet": "4050 여성 주목! 10살은 어려보이는 가을 \u003cb\u003e패션\u003c/b\u003e 코디법 #미샵 #여성\u003cb\u003e의류\u003c/b\u003e ...",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://www.tiktok.com/@misharpcompany/video/7413270716042300680",
+        "height": 1920,
+        "width": 1080,
+        "byteSize": 230108,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoCg9al2VEOsYh6qH39jkBT_xNBu4FIlHgd5IkYOL6FPvmfc4J_xO7Hw&s",
+        "thumbnailHeight": 150,
+        "thumbnailWidth": 84
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "킹 A급 중국 패션 레이디스 데님 진 팬츠 두 번째 핸드의류 베일 베일 ...",
+      "htmlTitle": "킹 A급 중국 \u003cb\u003e패션\u003c/b\u003e 레이디스 데님 \u003cb\u003e진\u003c/b\u003e 팬츠 두 번째 핸드\u003cb\u003e의류\u003c/b\u003e 베일 베일 ...",
+      "link": "https://image.made-in-china.com/202f0j00EGOqUnsYLJoN/King-A-Grade-China-Fashion-Ladies-Denim-Jean-Pants-Second-Hand-Clothing-Bale-Bales-Used-Clothes.webp",
+      "displayLink": "kr.made-in-china.com",
+      "snippet": "킹 A급 중국 패션 레이디스 데님 진 팬츠 두 번째 핸드의류 베일 베일 ...",
+      "htmlSnippet": "킹 A급 중국 \u003cb\u003e패션\u003c/b\u003e 레이디스 데님 \u003cb\u003e진\u003c/b\u003e 팬츠 두 번째 핸드\u003cb\u003e의류\u003c/b\u003e 베일 베일 ...",
+      "mime": "image/webp",
+      "fileFormat": "image/webp",
+      "image": {
+        "contextLink": "https://kr.made-in-china.com/co_dodokinga/product_King-A-Grade-China-Fashion-Ladies-Denim-Jean-Pants-Second-Hand-Clothing-Bale-Bales-Used-Clothes_ysyngrsyyg.html",
+        "height": 550,
+        "width": 550,
+        "byteSize": 55974,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTixbPlZKIwBAq4-rRgtJcwFZjwWDpEqCJl38lIicka6Lytfzh4v6b-QvF5&s",
+        "thumbnailHeight": 133,
+        "thumbnailWidth": 133
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "인스타 청바지 맛집 | TikTok",
+      "htmlTitle": "인스타 \u003cb\u003e청바지\u003c/b\u003e 맛집 | TikTok",
+      "link": "https://www.tiktok.com/api/img/?itemId=7459661525444218130&location=3&aid=1988&index=1",
+      "displayLink": "www.tiktok.com",
+      "snippet": "인스타 청바지 맛집 | TikTok",
+      "htmlSnippet": "인스타 \u003cb\u003e청바지\u003c/b\u003e 맛집 | TikTok",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://www.tiktok.com/discover/%EC%9D%B8%EC%8A%A4%ED%83%80-%EC%B2%AD%EB%B0%94%EC%A7%80-%EB%A7%9B%EC%A7%91",
+        "height": 1440,
+        "width": 1080,
+        "byteSize": 189340,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGkeZ3_DJqaEfMv2ZBerBEGo9IfBeiOqXAptIhfZJKWok6nS2aHusUyA&s",
+        "thumbnailHeight": 150,
+        "thumbnailWidth": 113
+      }
+    }
+  ]
+}

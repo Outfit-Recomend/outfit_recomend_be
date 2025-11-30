@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>생성된 코디 이미지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .info {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .info p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>생성된 코디 이미지</h1>
+        <div class="info">
+            <p><strong>설명:</strong> <span id="description"></span></p>
+            <p><strong>검색된 상품 수:</strong> <span id="productCount"></span></p>
+        </div>
+        <img id="outfitImage" alt="코디 이미지" />
+        <div id="products"></div>
+    </div>
+    <script>
+        // URL에서 base64 이미지 데이터 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const imageData = urlParams.get('image');
+        const description = urlParams.get('description') || '';
+        const productCount = urlParams.get('productCount') || '0';
+        
+        if (imageData) {
+            document.getElementById('outfitImage').src = imageData;
+            document.getElementById('description').textContent = description;
+            document.getElementById('productCount').textContent = productCount;
+        } else {
+            document.body.innerHTML = '<div class="container"><h1>이미지 데이터가 없습니다.</h1></div>';
+        }
+    </script>
+</body>
+</html>
+
