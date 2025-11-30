@@ -1,0 +1,55 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea
+.vscode
+*.iml
+*.ipr
+*.iws
+.DS_Store
+
+# Build
+build/
+.gradle/
+gradle/
+!gradle/wrapper/
+gradlew
+gradlew.bat
+
+# Logs
+logs/
+*.log
+
+# Test
+test_img/
+*.png
+*.jpg
+*.jpeg
+
+# Documentation
+*.md
+!README.md
+
+# Scripts
+*.sh
+*.py
+*.bat
+
+# HTML
+*.html
+!generated-outfit.html
+
+# Environment
+.env
+.env.local
+setenv.sh
+setenv.bat
+
+# Other
+response.json
+test-api-response.json
+view-image.html
+
