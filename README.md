@@ -61,11 +61,6 @@ set GOOGLE_SEARCH_ENGINE_ID=your-engine-id
 
 ## 실행
 
-### Maven 사용:
-```bash
-mvn spring-boot:run -Dspring-boot.run.profiles=local
-```
-
 ### Gradle 사용:
 ```bash
 # Gradle Wrapper 사용 (권장)
