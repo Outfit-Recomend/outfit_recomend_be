@@ -2,6 +2,12 @@ package com.example.outfit.api;
 
 import com.example.outfit.application.OutfitService;
 import com.example.outfit.domain.OutfitSuggestion;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -18,6 +24,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api/outfit")
 @RequiredArgsConstructor
+@Tag(name = "Outfit Recommendation", description = "이미지 기반 코디 추천 API")
 public class OutfitController {
 
     private final OutfitService outfitService;
@@ -28,8 +35,26 @@ public class OutfitController {
      * @param file 업로드된 이미지 파일
      * @return 코디 추천 결과
      */
+    @Operation(
+            summary = "코디 추천",
+            description = "업로드된 이미지를 분석하여 코디를 추천하고, 추천된 코디를 입은 모습의 이미지를 생성합니다."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "성공",
+                    content = @Content(schema = @Schema(implementation = OutfitSuggestion.class))
+            ),
+            @ApiResponse(responseCode = "400", description = "잘못된 요청 (빈 파일 등)"),
+            @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     @PostMapping(value = "/recommend", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<OutfitSuggestion> recommendOutfit(
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    description = "업로드할 이미지 파일 (JPG, PNG 등, 최대 20MB)",
+                    required = true,
+                    content = @Content(mediaType = MediaType.MULTIPART_FORM_DATA_VALUE)
+            )
             @RequestParam("image") MultipartFile file) {
         
         try {
@@ -60,8 +85,26 @@ public class OutfitController {
      * @param file 업로드된 이미지 파일
      * @return 제품 추천 결과 (생성된 이미지 + 제품 목록)
      */
+    @Operation(
+            summary = "제품 추천",
+            description = "업로드된 이미지를 분석하여 코디를 추천하고, 추천된 코디를 입은 모습의 이미지를 생성하며, 관련 제품 목록을 검색합니다."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "성공",
+                    content = @Content(schema = @Schema(implementation = OutfitSuggestion.class))
+            ),
+            @ApiResponse(responseCode = "400", description = "잘못된 요청 (빈 파일 등)"),
+            @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     @PostMapping(value = "/products", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<OutfitSuggestion> recommendProducts(
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    description = "업로드할 이미지 파일 (JPG, PNG 등, 최대 20MB)",
+                    required = true,
+                    content = @Content(mediaType = MediaType.MULTIPART_FORM_DATA_VALUE)
+            )
             @RequestParam("image") MultipartFile file) {
         
         try {
@@ -89,6 +132,13 @@ public class OutfitController {
     /**
      * Health check
      */
+    @Operation(
+            summary = "헬스 체크",
+            description = "서버 상태를 확인합니다."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "서버 정상 작동")
+    })
     @GetMapping("/health")
     public ResponseEntity<String> health() {
         return ResponseEntity.ok("OK");
