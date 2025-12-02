@@ -36,11 +36,121 @@ public class VisionClient {
     }
 
     /**
+     * 속성 기반 추천 제품명 추출
+     * 패션 속성을 분석하여 어울리는 옷을 추천
+     */
+    public String extractRecommendedProductName(byte[] imageBytes, FashionAttributes attributes) {
+        try {
+            // API 키 검증
+            if (apiKey == null || apiKey.isEmpty()) {
+                log.error("❌ Vision API 키가 설정되지 않았습니다!");
+                throw new RuntimeException("Vision API 키가 설정되지 않았습니다. GEMINI_API_KEY 환경 변수를 확인하세요.");
+            }
+            
+            log.info("✅ Vision API 키 확인 - API 키: {}...", 
+                    apiKey.substring(0, Math.min(10, apiKey.length())));
+            
+            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            
+            // 속성 정보를 문자열로 변환
+            String colorsStr = attributes.getColors() != null && !attributes.getColors().isEmpty() 
+                ? String.join(", ", attributes.getColors()) : "미지정";
+            String styleStr = attributes.getStyle() != null && !attributes.getStyle().isEmpty() 
+                ? attributes.getStyle() : "미지정";
+            String patternStr = attributes.getPattern() != null && !attributes.getPattern().isEmpty() 
+                ? attributes.getPattern() : "미지정";
+            String seasonStr = attributes.getSeason() != null && !attributes.getSeason().isEmpty() 
+                ? attributes.getSeason() : "미지정";
+            String materialStr = attributes.getMaterial() != null && !attributes.getMaterial().isEmpty() 
+                ? attributes.getMaterial() : "미지정";
+            String clothingTypeStr = attributes.getClothingType() != null && !attributes.getClothingType().isEmpty() 
+                ? attributes.getClothingType() : "미지정";
+            
+            String prompt = String.format("""
+                다음 패션 속성을 분석하여 어울리는 옷 하나를 추천해주세요:
+                - 색상: %s
+                - 스타일: %s
+                - 의류 종류: %s
+                - 패턴: %s
+                - 계절: %s
+                - 재질: %s
+                
+                이 속성들에 어울리는 다른 옷 하나만 구체적인 제품명으로 추천해주세요.
+                예시: "캐주얼 브라운 재킷", "검정 슬랙스", "베이지 가디건", "화이트 셔츠" 등
+                
+                추천 제품명만 응답해주세요 (설명 없이 제품명만).
+                """, colorsStr, styleStr, clothingTypeStr, patternStr, seasonStr, materialStr);
+
+            String mimeType = "image/png";
+            
+            java.util.Map<String, Object> requestMap = new java.util.HashMap<>();
+            java.util.List<Object> parts = new java.util.ArrayList<>();
+            
+            java.util.Map<String, String> textPart = new java.util.HashMap<>();
+            textPart.put("text", prompt);
+            parts.add(textPart);
+            
+            java.util.Map<String, Object> inlineData = new java.util.HashMap<>();
+            inlineData.put("mime_type", mimeType);
+            inlineData.put("data", base64Image);
+            
+            java.util.Map<String, Object> imagePart = new java.util.HashMap<>();
+            imagePart.put("inline_data", inlineData);
+            parts.add(imagePart);
+            
+            java.util.Map<String, Object> content = new java.util.HashMap<>();
+            content.put("parts", parts);
+            
+            java.util.List<Object> contentsList = new java.util.ArrayList<>();
+            contentsList.add(content);
+            
+            requestMap.put("contents", contentsList);
+
+            String requestBody = objectMapper.writeValueAsString(requestMap);
+            log.debug("Vision API Request (속성 기반 추천 제품명): {}", requestBody);
+            log.info("속성 기반 추천 - 색상: {}, 스타일: {}, 의류 종류: {}", colorsStr, styleStr, clothingTypeStr);
+
+            try {
+                String response = webClient.post()
+                        .uri(visionEndpoint)
+                        .header("x-goog-api-key", apiKey)
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                        .bodyValue(requestBody)
+                        .retrieve()
+                        .bodyToMono(String.class)
+                        .block();
+
+                log.debug("Vision API Response (속성 기반 추천 제품명): {}", response);
+
+                return parseRecommendedProductName(response);
+
+            } catch (org.springframework.web.reactive.function.client.WebClientResponseException e) {
+                String errorBody = e.getResponseBodyAsString();
+                log.error("Vision API 호출 실패 - Status: {}, Body: {}", e.getStatusCode(), errorBody);
+                throw new RuntimeException("속성 기반 추천 제품명 추출 실패: " + e.getStatusCode() + " - " + errorBody, e);
+            }
+
+        } catch (Exception e) {
+            log.error("Vision API 호출 실패", e);
+            throw new RuntimeException("속성 기반 추천 제품명 추출 실패: " + e.getMessage(), e);
+        }
+    }
+
+    /**
      * 생성된 코디 이미지에서 추천 제품명 하나만 추출
      * AI에게 "이 이미지에 어울리는 옷 하나만 추천해줘"라고 요청
      */
     public String extractRecommendedProductName(byte[] imageBytes) {
         try {
+            // API 키 검증
+            if (apiKey == null || apiKey.isEmpty()) {
+                log.error("❌ Vision API 키가 설정되지 않았습니다!");
+                throw new RuntimeException("Vision API 키가 설정되지 않았습니다. GEMINI_API_KEY 환경 변수를 확인하세요.");
+            }
+            
+            log.info("✅ Vision API 키 확인 - API 키: {}...", 
+                    apiKey.substring(0, Math.min(10, apiKey.length())));
+            
             String base64Image = Base64.getEncoder().encodeToString(imageBytes);
             
             String prompt = """

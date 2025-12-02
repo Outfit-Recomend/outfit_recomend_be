@@ -32,21 +32,21 @@ public class OutfitService {
     public OutfitSuggestion processOutfitRecommendation(byte[] imageBytes) {
         log.info("코디 추천 파이프라인 시작");
 
-        // 1. 원본 이미지에서 AI에게 어울리는 옷 하나만 추천받기
-        log.info("1단계: 원본 이미지에서 AI에게 어울리는 옷 하나만 추천받는 중...");
-        String recommendedProduct = visionClient.extractRecommendedProductName(imageBytes);
+        // 1. 원본 이미지 속성 추출 (먼저 속성 추출)
+        log.info("1단계: 원본 이미지 속성 추출 중...");
+        FashionAttributes attributes = visionClient.extractAttributes(imageBytes);
+        log.info("추출된 속성: {}", attributes);
+
+        // 2. 속성 기반으로 AI에게 어울리는 옷 하나만 추천받기
+        log.info("2단계: 속성 기반으로 AI에게 어울리는 옷 하나만 추천받는 중...");
+        String recommendedProduct = visionClient.extractRecommendedProductName(imageBytes, attributes);
         log.info("AI가 추천한 제품: '{}'", recommendedProduct);
         
-        // 2. AI 추천 제품명 하나만으로 검색
-        log.info("2단계: AI 추천 제품명으로 검색 중...");
+        // 3. AI 추천 제품명 하나만으로 검색
+        log.info("3단계: AI 추천 제품명으로 검색 중...");
         log.info("검색에 사용할 제품명: '{}'", recommendedProduct);
         List<ProductCandidate> products = googleImageSearchClient.searchProducts(recommendedProduct, 20);
         log.info("검색된 상품 수: {}", products.size());
-
-        // 3. 원본 이미지 속성 추출 (코디 이미지 생성용)
-        log.info("3단계: 원본 이미지 속성 추출 중...");
-        FashionAttributes attributes = visionClient.extractAttributes(imageBytes);
-        log.info("추출된 속성: {}", attributes);
 
         // 4. 원본 옷 + 추천 옷 합쳐진 코디 텍스트 생성
         log.info("4단계: 원본 옷 + 추천 옷 합쳐진 코디 텍스트 생성 중...");
